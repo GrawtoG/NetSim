@@ -11,6 +11,7 @@ add_executable(NetSim
         src/nodes.cpp
         src/helpers.cpp
         src/factory.cpp
+        src/package.cpp
         )
 
 add_executable(NetSim_test
@@ -20,6 +21,7 @@ add_executable(NetSim_test
         src/nodes.cpp
         src/helpers.cpp
         src/factory.cpp
+        src/package.cpp
 )
 target_include_directories(NetSim_test PUBLIC
         ext/googletest-master/googlemock/include
