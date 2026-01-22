@@ -14,8 +14,8 @@ Package::Package()
   {
     if(assigned_ids.empty())
     {
-        Package_id = 1;
-        assigned_ids.insert(Package_id);
+      Package_id = 1;
+      assigned_ids.insert(Package_id);
     }
     else
     {
@@ -27,6 +27,6 @@ Package::Package()
 }
 
 Package::~Package() {
-    assigned_ids.erase(Package_id);
-    freed_ids.insert(Package_id);
+  assigned_ids.erase(Package_id);
+  freed_ids.insert(Package_id);
 }

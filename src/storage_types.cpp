@@ -8,7 +8,15 @@ void PackageQueue::push(Package&& package) {
     }
 };
 Package PackageQueue::pop() {
-    Package package = std::move(queue_container.front());
-    queue_container.pop_front();
-    return package;
+
+    switch (queue_type) {
+        case PackageQueueType::FIFO:
+        case PackageQueueType::LIFO:
+            Package p=queue_container.front();
+            queue_container.pop_front();
+            return p;
+            break;
+    }
+
+    return -1;
 };

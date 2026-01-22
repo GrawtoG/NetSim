@@ -1,3 +1,4 @@
+#pragma once
 #include "package.hxx"
 #include <list>
 #include <bits/unique_ptr.h>
