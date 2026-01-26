@@ -13,12 +13,9 @@ Wizualizacja struktury klas i powiązań w systemie:
 
 ## Model Sieci
 Linia produkcyjna składa się z następujących węzłów (nodes):
-
-  *Rampy rozładunkowe (Sources): dostarczają półprodukty do fabryki.
-  
-  *Robotnicy (Workers): przetwarzają półprodukty przy użyciu kolejek FIFO lub LIFO.
-  
-  *Magazyny (Sinks): przechowują gotowe produkty końcowe.
+  * Rampy rozładunkowe (Sources): dostarczają półprodukty do fabryki.
+  * Robotnicy (Workers): przetwarzają półprodukty przy użyciu kolejek FIFO lub LIFO.
+  * Magazyny (Sinks): przechowują gotowe produkty końcowe.
   
   ### Dopuszczalne połączenia:
     - Rampa → Robotnik
@@ -34,15 +31,13 @@ Symulacja odbywa się w turach, a każda z nich składa się z następujących e
 
 ## Konfiguracja
 System wczytuje strukturę sieci z plików tekstowych. Format wejściowy obejmuje:
-
-  *Definicje ramp, robotników i magazynów.
-  
-  *Mapę połączeń między węzłami.
+  * Definicje ramp, robotników i magazynów.
+  * Mapę połączeń między węzłami.
 
 ## Autorzy :
-  * Mateusz Karpiak *
-  * Emilian Kaczyński *
-  * Karol Ji *
+  * Mateusz Karpiak
+  * Emilian Kaczyński
+  * Karol Ji
 
 ## Licencja :
 Projekt został udostępniony na licencji MIT
