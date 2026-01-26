@@ -13,9 +13,13 @@ Wizualizacja struktury klas i powiązań w systemie:
 
 ## Model Sieci
 Linia produkcyjna składa się z następujących węzłów (nodes):
+
   *Rampy rozładunkowe (Sources): dostarczają półprodukty do fabryki.
+  
   *Robotnicy (Workers): przetwarzają półprodukty przy użyciu kolejek FIFO lub LIFO.
+  
   *Magazyny (Sinks): przechowują gotowe produkty końcowe.
+  
   ### Dopuszczalne połączenia:
     - Rampa → Robotnik
     - Robotnik → Robotnik
