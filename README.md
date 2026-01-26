@@ -24,10 +24,10 @@ Linia produkcyjna składa się z następujących węzłów (nodes):
 
 ## Logika Symulacji:
 Symulacja odbywa się w turach, a każda z nich składa się z następujących etapów:
-1. *Dostawa: produkty pojawiają się na rampach.
-2. *Przekazanie: natychmiastowe przesłanie produktu do odbiorcy.
-3. *Przetworzenie: robotnicy pracują nad produktami przez określoną liczbę tur.
-4. *Raportowanie: generowanie stanu symulacji w zadanych odstępach czasu.
+1. Dostawa: produkty pojawiają się na rampach.
+2. Przekazanie: natychmiastowe przesłanie produktu do odbiorcy.
+3. Przetworzenie: robotnicy pracują nad produktami przez określoną liczbę tur.
+4. Raportowanie: generowanie stanu symulacji w zadanych odstępach czasu.
 
 ## Konfiguracja:
 System wczytuje strukturę sieci z plików tekstowych. Format wejściowy obejmuje:
