@@ -10,13 +10,32 @@ class worker
 -processing_time: int
 -queue: std::unique_ptr<IPackageQueue>
 }
-class ramp{
-+ramp(id: ElementID, di: TimeOffset): void
+class Ramp{
++Ramp(id: ElementID, di: TimeOffset): void
 +deliver_goods(t: Time): void
 +get_id(): ElementID
 +get_delivery_interval(): int
--ramp_id: int
+-Ramp_id: int
 -delivery_interval: int
+}
+class PackageSender{
++receiverPreferences_: ReceiverPreferences
++send_package(): void
++get_sending_buffer(): std::optional<Package>&
++PackageSender(PackageSender&&)
+push_package(Package&&): void
+}
+interface IPackageReceiver <<interface>>{
++{abstract} receive_package(Package&&) : void
++{abstract} get_id() : ElementID {query}
+}
+class ReceiverPreferences{
++preferences_t
++ReceiverPreferences(pg: ProbabilityGenerator)
++add_receiver(r: IPackageReceiver*): void
++remove_receiver(r: IPackageReceiver*): void
++choose_receiver(): IPackageReceiver*
++get_preferences(): preferences_t&
 }
 class storehouse{
 -storehouse_id: ElementID
@@ -79,9 +98,14 @@ IPackageQueue --|> IPackageStockpile
 storehouse *-- ElementID
 Package *-- ElementID
 PackageQueue *-- Package
-ramp *-- ElementID
+Ramp *-- ElementID
 storehouse o-- IPackageStockpile
 	class ElementID << (T,orchid) primitive>>
+PackageSender *-- ReceiverPreferences
+Ramp <|-- PackageSender
+worker <|-- PackageSender
 
+storehouse <|-- IPackageReceiver
+worker <|-- IPackageReceiver
 
 @enduml
