@@ -34,7 +34,9 @@ Symulacja odbywa się w turach, a każda z nich składa się z następujących e
 
 ## Konfiguracja
 System wczytuje strukturę sieci z plików tekstowych. Format wejściowy obejmuje:
+
   *Definicje ramp, robotników i magazynów.
+  
   *Mapę połączeń między węzłami.
 
 ## Autorzy :
