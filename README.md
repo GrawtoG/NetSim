@@ -3,9 +3,9 @@
 Projekt służy do modelowania i symulacji przepływu produktów w sieci linii produkcyjnej fabryki. System pozwala na analizę wydajności i weryfikację spójności struktury logistycznej.
 
 ## Stos Technologiczny:
-  *Język: C++ (Standard 14/17).
-  *System budowania: CMake.
-  *Testy jednostkowe: GoogleTest.
+  * Język: C++ (Standard 14/17).
+  * System budowania: CMake.
+  * Testy jednostkowe: GoogleTest.
 
 ## Schemat Architektury
 Wizualizacja struktury klas i powiązań w systemie:
