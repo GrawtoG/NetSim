@@ -60,7 +60,7 @@ IPackageReceiver* ReceiverPreferences::choose_receiver() {
     return preferences.begin()->first;
 }
 void Ramp::deliver_goods(Time t) {
-    if (t==1||(t - delivery_processing_start_time) >= delivery_interval) {
+    if ((t - 1) % delivery_interval == 0) {
         push_package(Package());
     }
 }
