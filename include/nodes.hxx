@@ -6,6 +6,14 @@
 #include "types.hxx"
 #include "package.hxx"
 
+enum class NodeColor {
+    UNVISITED, VISITED, VERIFIED
+};
+enum class ReceiverType {
+    WORKER, STOREHOUSE
+};
+
+
 class IPackageReceiver {
 public:
     using const_iterator = IPackageStockpile::const_iterator;
@@ -16,6 +24,8 @@ public:
     virtual const_iterator end() const = 0;
     virtual const_iterator cbegin() const = 0;
     virtual const_iterator cend() const = 0;
+
+    virtual ReceiverType get_receiver_type() const = 0;
 
 };
 class ReceiverPreferences {
@@ -86,6 +96,7 @@ public:
     const_iterator end() const override{return stockpile->end();};
     const_iterator cbegin() const override{return stockpile->cbegin();};
     const_iterator cend() const override{return stockpile->cend();};
+    ReceiverType get_receiver_type() const override{return ReceiverType::STOREHOUSE;};
 private:
         std::unique_ptr<IPackageStockpile> stockpile;
         ElementID storehouse_id;
@@ -104,6 +115,7 @@ public:
     const_iterator end() const override {return queue->end();};
     const_iterator cbegin() const override {return queue->cbegin();};
     const_iterator cend() const override {return queue->cend();};
+    ReceiverType get_receiver_type() const override{return ReceiverType::WORKER;};
 
 private:
     std::unique_ptr<IPackageQueue> queue;
