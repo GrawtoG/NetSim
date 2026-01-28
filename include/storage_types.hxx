@@ -1,6 +1,7 @@
 #pragma once
 #include "package.hxx"
 #include <list>
+#include <optional>
 #include <bits/unique_ptr.h>
 
 #include "types.hxx"
@@ -44,34 +45,5 @@ private:
     PackageQueueType queue_type;
     std::list<Package> queue_container ;
 };
-class ramp {
-    public:
-        ramp(ElementID id): ramp_id(id) {}
-        ElementID get_ramp_id() const {return ramp_id;};
-        int get_delivery_interval() const {return delivery_interval;};
-    private:
-        ElementID ramp_id;
-        int delivery_interval;
-};
-class storehouse {
-    public:
-        storehouse(ElementID id, IPackageStockpile* stockpile_ptr): stockpile(stockpile_ptr), storehouse_id(id) {};
-        IPackageStockpile* get_products() const {return stockpile; };
-        void add_products(std::list<Package>);
-    private:
-        IPackageStockpile* stockpile;
-        ElementID storehouse_id;
-};
-class Worker {
-    public:
-        Worker(ElementID id, IPackageQueue* queue_ptr, Time proc_time, PackageQueueType q_type ): queue(queue_ptr), worker_id(id), processing_time(proc_time), queue_type(q_type) {}
-        Worker(int i, int i1, const std::unique_ptr<::PackageQueue>& unique);;
-        ElementID get_worker_id() const {return worker_id;};
-        int get_processing_time() const {return processing_time;};
-    private:
-        IPackageQueue* queue;
-        ElementID worker_id;
-        Time processing_time;
-        PackageQueueType queue_type;
-};
+
 
