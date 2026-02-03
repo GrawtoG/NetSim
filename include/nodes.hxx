@@ -6,6 +6,17 @@
 #include "types.hxx"
 #include "package.hxx"
 
+enum class NodeColor {
+    UNVISITED,
+    VISITED,
+    VERIFIED
+};
+
+enum class ReceiverType {
+    WORKER,
+    STOREHOUSE
+};
+
 class IPackageReceiver {
 public:
     using const_iterator = IPackageStockpile::const_iterator;
@@ -16,6 +27,7 @@ public:
     virtual const_iterator end() const = 0;
     virtual const_iterator cbegin() const = 0;
     virtual const_iterator cend() const = 0;
+    virtual ReceiverType get_receiver_type() const = 0;
 
 };
 class ReceiverPreferences {
@@ -77,6 +89,7 @@ class Ramp: public PackageSender {
 };
 class Storehouse:public IPackageReceiver {
 public:
+    ReceiverType get_receiver_type() const override { return ReceiverType::STOREHOUSE; }
     Storehouse(ElementID id, std::unique_ptr<IPackageStockpile> stockpile_ptr=std::make_unique<PackageQueue>(PackageQueueType::FIFO)): stockpile(std::move(stockpile_ptr)), storehouse_id(id) {};
     IPackageStockpile* get_stockpile() const {return stockpile.get(); };
     void add_products(std::list<Package>);
@@ -92,6 +105,7 @@ private:
 };
 class Worker:public IPackageReceiver, public PackageSender{
 public:
+    ReceiverType get_receiver_type() const override { return ReceiverType::WORKER; }
     //Worker(ElementID id, IPackageQueue* queue_ptr, Time proc_time, PackageQueueType q_type ): queue(queue_ptr), worker_id(id), processing_time(proc_time), queue_type(q_type) {};
     Worker(ElementID id, TimeOffset pd, std::unique_ptr<IPackageQueue> q): PackageSender(), queue(std::move(q)), worker_id(id), processing_time(pd) {};
     ElementID get_worker_id() const {return worker_id;};
@@ -104,7 +118,7 @@ public:
     const_iterator end() const override {return queue->end();};
     const_iterator cbegin() const override {return queue->cbegin();};
     const_iterator cend() const override {return queue->cend();};
-
+    IPackageQueue* get_queue() const { return queue.get(); }
 private:
     std::unique_ptr<IPackageQueue> queue;
     ElementID worker_id;
